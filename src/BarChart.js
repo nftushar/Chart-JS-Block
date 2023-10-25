@@ -1,0 +1,67 @@
+import React from 'react';
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+const BarChart = ({ attributes }) => {
+  const { jsonData, xmlData } = attributes;
+
+  // console.log(xmlData);
+
+  let labels, values;
+  // console.log(jsonData)
+  if (Array.isArray(jsonData) && jsonData.length > 0 && jsonData.every((data) => data.label && data.value)) {
+    console.log('working', jsonData)
+    labels = jsonData.map((data) => data.label);
+    values = jsonData.map((data) => data.value);
+  } else if (Array.isArray(xmlData) && xmlData.length > 0 && xmlData.every((data) => data.label && data.value)) {
+
+    labels = xmlData.map((data) => data.label);
+    values = xmlData.map((data) => data.value);
+  } else {
+    console.error('Unsupported data type or empty/invalid JSON data.');
+    console.log('jsonData error:', jsonData);
+    console.log('xmlData error:', xmlData);
+    return null;
+
+  }
+
+  const doughnutData = {
+    labels: labels,
+    datasets: [
+      {
+        data: values,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 205, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(201, 203, 207, 0.2)',
+        ],
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 205, 86)',
+          'rgb(75, 192, 192)',
+          'rgb(54, 162, 235)',
+          'rgb(153, 102, 255)',
+          'rgb(201, 203, 207)',
+        ],
+        borderWidth: 1,
+        borderRadius: 1,
+      },
+    ],
+  };
+
+  return (
+    <div className="bBlocksBarChart">
+      <div className="dataCard revenueCard">
+        <Doughnut data={doughnutData} />
+      </div>
+    </div>
+  );
+};
+
+export default BarChart;
