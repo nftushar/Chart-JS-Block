@@ -15,7 +15,7 @@ class BDBBlockDirectory{
 
 		wp_set_script_translations( 'b-blocks-star-rating-editor-script', 'star-rating', plugin_dir_path( __DIR__ ) . 'languages' ); // Translate
 	}
-
+	
 	function render( $attributes ){
 		extract( $attributes );
 
@@ -23,7 +23,7 @@ class BDBBlockDirectory{
         wp_enqueue_script( 'b-blocks-star-rating-script', plugins_url( 'dist/script.js', __DIR__ ), [ 'react', 'react-dom' ], B_BLOCKS_VERSION, true );
 
 		$className = $className ?? '';
-		$blockClassName = "wp-block-b-blocks-star-rating $className align$align";
+		$blockClassName = "wp-block-b-blocks-b-chart-block $className align$align";
 
 		ob_start(); ?>
 		<div class='<?php echo esc_attr( $blockClassName ); ?>' id='bBlocksRating-<?php echo esc_attr( $cId ) ?>' data-attributes='<?php echo esc_attr( wp_json_encode( $attributes ) ); ?>'></div>

@@ -57,6 +57,27 @@
         }
       ]
     },
+    "csvData": {
+      "type": "array",
+      "default": [
+        {
+          "label": "DataBase Sheets Data",
+          "value": "13"
+        },
+        {
+          "label": "DataBase Sheets Data 2",
+          "value": "43"
+        },
+        {
+          "label": "DataBase Sheets Data 3",
+          "value": "14"
+        },
+        {
+          "label": "DataBase Sheets Data 4",
+          "value": "33"
+        }
+      ]
+    },
     "iconStyle": {
       "type": "string",
       "default": "solid"

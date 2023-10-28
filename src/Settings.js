@@ -3,10 +3,6 @@ import React, { useState } from 'react';
 import { InspectorControls } from "@wordpress/block-editor";
 import { PanelBody, TabPanel, FormFileUpload } from "@wordpress/components";
 
-const getFileExtension = (fileName) => {
-  return fileName.split('.').pop();
-};
-
 const readJSONFile = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -53,28 +49,53 @@ const readXMLFile = (file) => {
   });
 };
 
+const readCSVFile = (csv) => {
+  const lines = csv.split('\n');
+  const result = [];
+  const headers = lines[0].split(',');
+
+  for (let i = 1; i < lines.length; i++) {
+    const obj = {};
+    const currentline = lines[i].split(',');
+
+    for (let j = 0; j < headers.length; j++) {
+      const key = headers[j].trim();
+      const value = currentline[j].trim();
+      obj[key] = value;
+    }
+
+    result.push(obj);
+  }
+
+  return result;
+};
+
 const Settings = ({ attributes, setAttributes }) => {
-  const { jsonData: existingjsonData, xmlData: existingXmlData } = attributes;
+  const { jsonData: existingjsonData, xmlData: existingXmlData, csvData: existingCSVData } = attributes;
   const [jsonData, setJsonData] = useState(null);
   const [xmlData, setXmlData] = useState(null);
+  const [csvData, setCsvData] = useState(null);
 
   const handleFileUpload = async (event) => {
     const file = event.currentTarget.files[0];
     if (file) {
       try {
-        const fileExtension = getFileExtension(file.name);
+        const fileType = file.type.split('/')[1];
 
-        if (fileExtension.toLowerCase() === 'json') {
+        if (fileType.toLowerCase() === 'json') {
           const jsonData = await readJSONFile(file);
-          console.log(jsonData)
           setJsonData(jsonData);
-          setAttributes({ jsonData: jsonData.people, xmlData: [] });
-        } else if (fileExtension.toLowerCase() === 'xml') {
+          setAttributes({ jsonData: jsonData.people, xmlData: [], csvData: [] });
+        } else if (fileType.toLowerCase() === 'xml') {
           const xmlData = await readXMLFile(file);
           setXmlData(xmlData);
-          setAttributes({ xmlData, jsonData: [] });
+          setAttributes({ xmlData, jsonData: [], csvData: [] });
+        } else if (fileType.toLowerCase() === 'csv') {
+          const csvData = readCSVFile(await file.text());
+          setCsvData(csvData);
+          setAttributes({ csvData, jsonData: [], xmlData: [] });
         } else {
-          console.error('Unsupported file format. Please upload a JSON or XML file.');
+          console.error('Unsupported file format. Please upload a JSON, XML, or CSV file.');
         }
       } catch (error) {
         console.error('Error reading or parsing file:', error);
@@ -99,7 +120,7 @@ const Settings = ({ attributes, setAttributes }) => {
                 title={__("Settings", "star-rating")}
               >
                 <FormFileUpload
-                  accept=".json, .xml"
+                  accept=".json, .xml, .csv"
                   onChange={handleFileUpload}
                 >
                   Upload

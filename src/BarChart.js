@@ -4,26 +4,31 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const BarChart = ({ attributes }) => {
-  const { jsonData, xmlData } = attributes;
-
-  // console.log(xmlData);
+  const { jsonData, csvData, xmlData } = attributes;
 
   let labels, values;
-  // console.log(jsonData)
-  if (Array.isArray(jsonData) && jsonData.length > 0 && jsonData.every((data) => data.label && data.value)) {
-    console.log('working', jsonData)
+
+  if (
+    Array.isArray(jsonData) && jsonData.length > 0 && jsonData.every((data) => data && data.label && data.value)
+  ) {
     labels = jsonData.map((data) => data.label);
     values = jsonData.map((data) => data.value);
-  } else if (Array.isArray(xmlData) && xmlData.length > 0 && xmlData.every((data) => data.label && data.value)) {
-
+  } else if (
+    Array.isArray(xmlData) && xmlData.length > 0 && xmlData.every((data) => data && data.label && data.value)
+  ) {
     labels = xmlData.map((data) => data.label);
     values = xmlData.map((data) => data.value);
+  } else if (
+    Array.isArray(csvData) && csvData.length > 0 && csvData.every((data) => data && data.label && data.value)
+  ) {
+    labels = csvData.map((data) => data.label);
+    values = csvData.map((data) => (data.value ? data.value.replace(/\r/g, '').trim() : ''));
   } else {
     console.error('Unsupported data type or empty/invalid JSON data.');
     console.log('jsonData error:', jsonData);
     console.log('xmlData error:', xmlData);
+    console.log('csvData error:', csvData);
     return null;
-
   }
 
   const doughnutData = {
