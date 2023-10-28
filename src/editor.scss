@@ -5,6 +5,10 @@ $primaryColor: #4527a4;
 		position: absolute;
 		height: 100%;
 		width: 100%;
-		z-index: 5;
+		z-index: 2;
 	}
+}
+.block-editor__container img {
+    height: auto;
+    max-width: 200%;
 }

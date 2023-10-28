@@ -5,8 +5,12 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const BarChart = ({ attributes }) => {
   // console.log(attributes.barChart);  
-  const { jsonData, myChart, csvData, xmlData } = attributes;
-  console.log(myChart.data);
+  const { jsonData, chart, csvData, xmlData } = attributes;
+  const { border } = chart;
+  const { color, width, radius } = border;
+
+
+  // console.log(border);
 
   let labels, values;
 
@@ -56,8 +60,10 @@ const BarChart = ({ attributes }) => {
           'rgb(153, 102, 255)',
           'rgb(201, 203, 207)',
         ],
-        borderWidth: 1,
-        borderRadius: 1,
+
+        borderWidth: width,
+        borderRadius: radius,
+
       },
     ],
   };

@@ -6,7 +6,7 @@
   "category": "media",
   "keywords": [
     "bar-chart",
-    "Rating",
+    "chart",
     "Gutenberg"
   ],
   "textdomain": "bar-chart",
@@ -19,41 +19,19 @@
       "type": "string",
       "default": ""
     },
-    "myChart": {
+    "chart": {
       "type": "object",
       "default": {
-        "width": {
-          "type": "number",
-          "widthValue": 95
-        },
-        "type": {
-          "type": "string",
-          "chartType": "bar"
-        },
-        "labels": {
-          "type": "string",
-          "default": "January"
-        },
-        "data": 21,
-        "dataLabel": {
-          "type": "string",
-          "label": "T-Shirt"
-        },
-        "background": {
-          "type": "string",
-          "default": "#ffffff"
-        },
+        "width": 95,
+        "type": "bar",
+        "labels": "January",
+        "cValue": 21,
+        "dataLabel": "T-Shirt",
+        "background": "#ffffff",
         "border": {
-          "color": {
-            "type": "string",
-            "default": "#000000",
-            "description": "Border color."
-          },
-          "width": {
-            "type": "number",
-            "default": 4,
-            "description": "Border width in pixels."
-          }
+          "color": "#000000",
+          "width": 4,
+          "radius": 8
         }
       }
     },
