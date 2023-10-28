@@ -4,7 +4,9 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const BarChart = ({ attributes }) => {
-  const { jsonData, csvData, xmlData } = attributes;
+  // console.log(attributes.barChart);  
+  const { jsonData, myChart, csvData, xmlData } = attributes;
+  console.log(myChart.data);
 
   let labels, values;
 

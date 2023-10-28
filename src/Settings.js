@@ -117,7 +117,7 @@ const Settings = ({ attributes, setAttributes }) => {
             {tab.name === "general" && (
               <PanelBody
                 className="bPlPanelBody"
-                title={__("Settings", "star-rating")}
+                title={__("Settings", "bar-chart")}
               >
                 <FormFileUpload
                   accept=".json, .xml, .csv"
@@ -131,7 +131,7 @@ const Settings = ({ attributes, setAttributes }) => {
             {tab.name === "style" && (
               <PanelBody
                 className="bPlPanelBody"
-                title={__("Title", "star-rating")}
+                title={__("Title", "bar-chart")}
               >
                 {/* Your style settings components go here */}
               </PanelBody>

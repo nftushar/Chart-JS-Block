@@ -1,15 +1,15 @@
 {
   "apiVersion": "1",
-  "name": "b-blocks/star-rating",
+  "name": "b-blocks/bar-chart",
   "title": "Bar Chart",
-  "description": "Gutenberg editing with easy-to-use, responsive star-rating  more.",
+  "description": "Gutenberg editing with easy-to-use, responsive bar-chart  more.",
   "category": "media",
   "keywords": [
-    "star-rating",
+    "bar-chart",
     "Rating",
     "Gutenberg"
   ],
-  "textdomain": "star-rating",
+  "textdomain": "bar-chart",
   "attributes": {
     "align": {
       "type": "string",
@@ -18,6 +18,44 @@
     "cId": {
       "type": "string",
       "default": ""
+    },
+    "myChart": {
+      "type": "object",
+      "default": {
+        "width": {
+          "type": "number",
+          "widthValue": 95
+        },
+        "type": {
+          "type": "string",
+          "chartType": "bar"
+        },
+        "labels": {
+          "type": "string",
+          "default": "January"
+        },
+        "data": 21,
+        "dataLabel": {
+          "type": "string",
+          "label": "T-Shirt"
+        },
+        "background": {
+          "type": "string",
+          "default": "#ffffff"
+        },
+        "border": {
+          "color": {
+            "type": "string",
+            "default": "#000000",
+            "description": "Border color."
+          },
+          "width": {
+            "type": "number",
+            "default": 4,
+            "description": "Border width in pixels."
+          }
+        }
+      }
     },
     "ratingScale": {
       "type": "number",
@@ -62,47 +100,38 @@
       "default": [
         {
           "label": "DataBase Sheets Data",
-          "value": "13"
+          "value": 13
         },
         {
           "label": "DataBase Sheets Data 2",
-          "value": "43"
+          "value": 43
         },
         {
           "label": "DataBase Sheets Data 3",
-          "value": "14"
+          "value": 14
         },
         {
           "label": "DataBase Sheets Data 4",
-          "value": "33"
+          "value": 33
         }
       ]
     },
-    "iconStyle": {
-      "type": "string",
-      "default": "solid"
-    },
-    "prefix": {
-      "type": "string",
-      "default": ""
-    },
-    "gap": {
-      "type": "string",
-      "default": "10px"
-    },
-    "alignment": {
-      "type": "string",
-      "default": "center"
-    },
-    "textTypo": {
-      "type": "object",
-      "default": {
-        "fontSize": "16px"
+    "legend": {
+      "position": {
+        "type": "string",
+        "default": "top",
+        "description": "Choose legend position from the list."
+      },
+      "color": {
+        "type": "string",
+        "default": "#333333",
+        "description": "Set legend text/label color."
+      },
+      "pointStyle": {
+        "type": "boolean",
+        "default": true,
+        "description": "Enable or disable legend point style."
       }
-    },
-    "textColor": {
-      "type": "string",
-      "default": "#7a7a7a"
     },
     "textShadow": {
       "type": "array",
