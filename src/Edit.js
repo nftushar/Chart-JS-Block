@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Settings from "./Settings";
 import Style from "./Style";
-import BarChart from './BarChart'; 
-import PieChart from './PieChart'
-import FakerChart from './FakerChart';
+import BarChart from './components/BarChart'; 
+import PieChart from './components/PieChart'
+import FakerChart from './components/FakerChart';
 
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
@@ -19,7 +19,7 @@ const Edit = (props) => {
       <Style attributes={attributes} clientId={clientId} />
       {/* <BarChart attributes={attributes} />  */}
       {/* <PieChart /> */}
-      <FakerChart/>
+      <FakerChart attributes={attributes}/>
       </div>
   </>;
 };

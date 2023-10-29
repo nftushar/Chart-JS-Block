@@ -2,15 +2,15 @@ import { createRoot } from 'react-dom';
 
 import "./style.scss";
 import Style from "./Style";
-import BarChart from './BarChart';
+import BarChart from './components/BarChart';
 
 document.addEventListener("DOMContentLoaded", () => {
-    const iframeEls = document.querySelectorAll(".wp-block-b-blocks-star-bar-chart");
-    iframeEls.forEach((iframeEl) => {
-        const attributes = JSON.parse(iframeEl.dataset.attributes);
+    const chartEls = document.querySelectorAll(".wp-block-b-blocks-bar-chart");
+    chartEls.forEach((chartEl) => {
+        const attributes = JSON.parse(chartEl.dataset.attributes);
         const { cId } = attributes;
 
-        const root = createRoot(iframeEl);
+        const root = createRoot(chartEl);
 
         root.render(
             <>
@@ -19,6 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </>
         );
 
-        iframeEl?.removeAttribute("data-attributes");
+        chartEl?.removeAttribute("data-attributes");
     });
 });
