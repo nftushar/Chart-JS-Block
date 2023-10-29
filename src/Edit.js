@@ -3,6 +3,7 @@ import Settings from "./Settings";
 import Style from "./Style";
 import BarChart from './BarChart'; 
 import PieChart from './PieChart'
+import FakerChart from './FakerChart';
 
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
@@ -16,8 +17,9 @@ const Edit = (props) => {
 
     <div className={className} id={`bBlocksBarChart-${clientId}`}>
       <Style attributes={attributes} clientId={clientId} />
-      <BarChart attributes={attributes} /> 
-      <PieChart />
+      {/* <BarChart attributes={attributes} />  */}
+      {/* <PieChart /> */}
+      <FakerChart/>
       </div>
   </>;
 };
