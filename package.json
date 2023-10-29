@@ -19,6 +19,7 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "chart.js": "^4.4.0",
+    "faker": "^6.6.6",
     "font-awesome": "^4.7.0",
     "immer": "^9.0.19",
     "jquery": "^3.7.0",

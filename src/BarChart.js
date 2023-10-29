@@ -1,7 +1,15 @@
 import React from 'react';
-import { Doughnut, Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-ChartJS.register(ArcElement, Tooltip, Legend);
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, RadialLinearScale, PointElement, LineElement, Filler, ArcElement, Tooltip, Legend } from 'chart.js';
+
+
+
+ChartJS.register(ArcElement, Tooltip, Legend, RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend);
 
 const BarChart = ({ attributes }) => {
   // console.log(attributes.barChart);  
@@ -38,7 +46,7 @@ const BarChart = ({ attributes }) => {
   }
 
   const doughnutData = {
-    labels: labels,
+    labels: ['Red', 'Blue', 'Yellow', 'Green'],
     datasets: [
       {
         data: values,

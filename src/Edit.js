@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import Settings from "./Settings";
 import Style from "./Style";
-import BarChart from './BarChart';
+import BarChart from './BarChart'; 
+import PieChart from './PieChart'
 
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
@@ -15,8 +16,8 @@ const Edit = (props) => {
 
     <div className={className} id={`bBlocksBarChart-${clientId}`}>
       <Style attributes={attributes} clientId={clientId} />
-
-      <BarChart attributes={attributes} />
+      <BarChart attributes={attributes} /> 
+      <PieChart />
       </div>
   </>;
 };
